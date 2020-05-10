@@ -467,7 +467,9 @@ class EPD2in13b(WaveshareColorDraw):
         self.send_command(self.PANEL_SETTING)
         self.send_data(0x8F)
         self.send_command(self.VCOM_AND_DATA_INTERVAL_SETTING)
-        self.send_data(0x37)
+        #self.send_data(0x37)
+        # Reference seems to send 0xF0 here, not 0x37
+        self.send_data(0xF0)
         self.send_command(self.RESOLUTION_SETTING)
         self.send_data(0x68)
         self.send_data(0x00)
