@@ -84,6 +84,7 @@ class WaveshareColorDraw(WaveshareColor):
             self.delay_ms(2)
             for i in range(0, int(self.width * self.height / 8)):
                 self.send_data(frame_buffer_black[i])
+            self.send_command(self.PARTIAL_OUT)
             self.delay_ms(2)
         if frame_buffer_red:
             self.send_command(self.DATA_START_TRANSMISSION_2)
@@ -91,6 +92,7 @@ class WaveshareColorDraw(WaveshareColor):
             for i in range(0, int(self.width * self.height / 8)):
                 self.send_data(frame_buffer_red[i])
             self.delay_ms(2)
+            self.send_command(self.PARTIAL_OUT)
 
         self.send_command(self.DISPLAY_REFRESH)
         self.wait_until_idle()
