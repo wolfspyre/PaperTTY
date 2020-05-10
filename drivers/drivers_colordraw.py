@@ -471,9 +471,15 @@ class EPD2in13b(WaveshareColorDraw):
         # Reference seems to send 0xF0 here, not 0x37
         self.send_data(0xF0)
         self.send_command(self.RESOLUTION_SETTING)
-        self.send_data(0x68)
-        self.send_data(0x00)
-        self.send_data(0xD4)
+        #self.send_data(0x68)
+        #self.send_data(0x00)
+        #self.send_data(0xD4)
+        # Reference driver seems to send different data here
+        # it's quite possible this is merely a different representation
+        # of the same end result. (the data sent may be the same? nasure)
+        self.send_data(self.width & 0xff)
+        self.send_data(self.height >> 8)
+        self.send_data(self.height & 0xff)
 
     def get_frame_buffer(self, image, reverse=True):
         super().get_frame_buffer(image, reverse=reverse)
