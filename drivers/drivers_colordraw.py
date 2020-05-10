@@ -484,7 +484,7 @@ class EPD2in13b(WaveshareColorDraw):
     def get_frame_buffer(self, image, reverse=True):
         super().get_frame_buffer(image, reverse=reverse)
 
-    def sleep(self, sleepbyte=0x37):
+    def sleep(self, sleepbyte=0x07):
         super().sleep(sleepbyte=sleepbyte)
 
 
